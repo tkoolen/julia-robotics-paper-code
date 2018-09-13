@@ -1,6 +1,5 @@
 using RigidBodyDynamics
 using Random
-using Profile
 using BenchmarkTools
 
 const ScalarType = Float64
@@ -44,6 +43,12 @@ function create_benchmark_suite()
         rand!($state)
     end, evals = 10)
 
+    suite["mass_matrix! + dynamics_bias!"] = @benchmarkable(begin
+        setdirty!($state)
+        mass_matrix!($(result.massmatrix), $state)
+        dynamics_bias!($result, $state)
+    end, setup = rand!($state), evals = 10)
+
     suite["inverse_dynamics!"] = @benchmarkable(begin
         setdirty!($state)
         inverse_dynamics!($torques, $(result.jointwrenches), $(result.accelerations), $state, v̇, externalwrenches)
@@ -69,25 +74,11 @@ function create_benchmark_suite()
         momentum_matrix!($mat, $state)
     end, setup = rand!($state), evals = 10)
 
-    suite["geometric_jacobian!"] = @benchmarkable(begin
-        setdirty!($state)
-        geometric_jacobian!($jac, $state, $p)
-    end, setup = rand!($state), evals = 10)
-
-    suite["mass_matrix! and geometric_jacobian!"] = @benchmarkable(begin
-        setdirty!($state)
-        mass_matrix!($(result.massmatrix), $state)
-        geometric_jacobian!($jac, $state, $p)
-    end, setup = begin
-        rand!($state)
-    end, evals = 10)
-
     suite
 end
 
 function runbenchmarks()
     suite = create_benchmark_suite()
-    Profile.clear_malloc_data()
     overhead = BenchmarkTools.estimate_overhead()
     Random.seed!(1)
     results = run(suite, verbose=true, overhead=overhead, gctrial=false)
