@@ -69,8 +69,8 @@ double run_forward_dynamics_ABA_benchmark (Model *model, int sample_count) {
 
   double duration = timer_stop (&tinfo);
 
-  cout << "#DOF: " << setw(3) << model->dof_count 
-    << " #samples: " << sample_count 
+  cout << "#DOF: " << setw(3) << model->dof_count
+    << " #samples: " << sample_count
     << " duration = " << setw(10) << duration << "(s)"
     << " (~" << setw(10) << duration / sample_count << "(s) per call)" << endl;
 
@@ -102,8 +102,8 @@ double run_forward_dynamics_lagrangian_benchmark (Model *model, int sample_count
 
   double duration = timer_stop (&tinfo);
 
-  cout << "#DOF: " << setw(3) << model->dof_count 
-    << " #samples: " << sample_count 
+  cout << "#DOF: " << setw(3) << model->dof_count
+    << " #samples: " << sample_count
     << " duration = " << setw(10) << duration << "(s)"
     << " (~" << setw(10) << duration / sample_count << "(s) per call)" << endl;
 
@@ -128,8 +128,8 @@ double run_inverse_dynamics_RNEA_benchmark (Model *model, int sample_count) {
 
   double duration = timer_stop (&tinfo);
 
-  cout << "#DOF: " << setw(3) << model->dof_count 
-    << " #samples: " << sample_count 
+  cout << "#DOF: " << setw(3) << model->dof_count
+    << " #samples: " << sample_count
     << " duration = " << setw(10) << duration << "(s)"
     << " (~" << setw(10) << duration / sample_count << "(s) per call)" << endl;
 
@@ -153,8 +153,8 @@ double run_CRBA_benchmark (Model *model, int sample_count) {
 
   double duration = timer_stop (&tinfo);
 
-  cout << "#DOF: " << setw(3) << model->dof_count 
-    << " #samples: " << sample_count 
+  cout << "#DOF: " << setw(3) << model->dof_count
+    << " #samples: " << sample_count
     << " duration = " << setw(10) << duration << "(s)"
     << " (~" << setw(10) << duration / sample_count << "(s) per call)" << endl;
 
@@ -178,8 +178,36 @@ double run_nle_benchmark (Model *model, int sample_count) {
 
   double duration = timer_stop (&tinfo);
 
-  cout << "#DOF: " << setw(3) << model->dof_count 
-    << " #samples: " << sample_count 
+  cout << "#DOF: " << setw(3) << model->dof_count
+    << " #samples: " << sample_count
+    << " duration = " << setw(10) << duration << "(s)"
+    << " (~" << setw(10) << duration / sample_count << "(s) per call)" << endl;
+
+  return duration;
+}
+
+double run_crba_nle_benchmark (Model *model, int sample_count) {
+  SampleData sample_data;
+  sample_data.fillRandom(model->dof_count, sample_count);
+
+  Math::MatrixNd H = Math::MatrixNd::Zero(model->dof_count, model->dof_count);
+
+  TimerInfo tinfo;
+  timer_start (&tinfo);
+
+  for (int i = 0; i < sample_count; i++) {
+    NonlinearEffects (*model,
+      sample_data.q[i],
+      sample_data.qdot[i],
+      sample_data.tau[i]
+      );
+    CompositeRigidBodyAlgorithm (*model, sample_data.q[i], H, false);
+  }
+
+  double duration = timer_stop (&tinfo);
+
+  cout << "#DOF: " << setw(3) << model->dof_count
+    << " #samples: " << sample_count
     << " duration = " << setw(10) << duration << "(s)"
     << " (~" << setw(10) << duration / sample_count << "(s) per call)" << endl;
 
@@ -201,8 +229,8 @@ double run_calc_minv_times_tau_benchmark (Model *model, int sample_count) {
 
   double duration = timer_stop (&tinfo);
 
-  cout << "#DOF: " << setw(3) << model->dof_count 
-    << " #samples: " << sample_count 
+  cout << "#DOF: " << setw(3) << model->dof_count
+    << " #samples: " << sample_count
     << " duration = " << setw(10) << duration << "(s)"
     << " (~" << setw(10) << duration / sample_count << "(s) per call)" << endl;
 
@@ -217,7 +245,7 @@ double run_contacts_lagrangian_benchmark (Model *model, ConstraintSet *constrain
   timer_start (&tinfo);
 
   for (int i = 0; i < sample_count; i++) {
-    ForwardDynamicsConstraintsDirect (*model, sample_data.q[i], sample_data.qdot[i], sample_data.tau[i], *constraint_set, sample_data.qddot[i]); 
+    ForwardDynamicsConstraintsDirect (*model, sample_data.q[i], sample_data.qdot[i], sample_data.tau[i], *constraint_set, sample_data.qddot[i]);
   }
 
   double duration = timer_stop (&tinfo);
@@ -233,7 +261,7 @@ double run_contacts_lagrangian_sparse_benchmark (Model *model, ConstraintSet *co
   timer_start (&tinfo);
 
   for (int i = 0; i < sample_count; i++) {
-    ForwardDynamicsConstraintsRangeSpaceSparse (*model, sample_data.q[i], sample_data.qdot[i], sample_data.tau[i], *constraint_set, sample_data.qddot[i]); 
+    ForwardDynamicsConstraintsRangeSpaceSparse (*model, sample_data.q[i], sample_data.qdot[i], sample_data.tau[i], *constraint_set, sample_data.qddot[i]);
   }
 
   double duration = timer_stop (&tinfo);
@@ -249,7 +277,7 @@ double run_contacts_null_space (Model *model, ConstraintSet *constraint_set, int
   timer_start (&tinfo);
 
   for (int i = 0; i < sample_count; i++) {
-    ForwardDynamicsConstraintsNullSpace (*model, sample_data.q[i], sample_data.qdot[i], sample_data.tau[i], *constraint_set, sample_data.qddot[i]); 
+    ForwardDynamicsConstraintsNullSpace (*model, sample_data.q[i], sample_data.qdot[i], sample_data.tau[i], *constraint_set, sample_data.qddot[i]);
   }
 
   double duration = timer_stop (&tinfo);
@@ -265,7 +293,7 @@ double run_contacts_kokkevis_benchmark (Model *model, ConstraintSet *constraint_
   timer_start (&tinfo);
 
   for (int i = 0; i < sample_count; i++) {
-    ForwardDynamicsContactsKokkevis(*model, sample_data.q[i], sample_data.qdot[i], sample_data.tau[i], *constraint_set, sample_data.qddot[i]); 
+    ForwardDynamicsContactsKokkevis(*model, sample_data.q[i], sample_data.qdot[i], sample_data.tau[i], *constraint_set, sample_data.qddot[i]);
   }
 
   double duration = timer_stop (&tinfo);
@@ -322,7 +350,7 @@ double contacts_benchmark (int sample_count, ContactsMethod contacts_method) {
   one_body_four_constraints.AddContactConstraint (foot_r, Vector3d (0.1, 0., -0.05), Vector3d (0., 1., 0.));
   one_body_four_constraints.AddContactConstraint (foot_r, Vector3d (0.1, 0., -0.05), Vector3d (0., 0., 1.));
   one_body_four_constraints.AddContactConstraint (foot_r, Vector3d (-0.1, 0., -0.05), Vector3d (1., 0., 0.));
-  one_body_four_constraints.Bind (*model);	
+  one_body_four_constraints.Bind (*model);
 
   // two_bodies_four
   two_bodies_four_constraints.AddContactConstraint (foot_r, Vector3d (0.1, 0., -0.05), Vector3d (1., 0., 0.));
@@ -622,6 +650,9 @@ int main (int argc, char *argv[]) {
       cout << "= Nonlinear effects  =" << endl;
       run_nle_benchmark (model, benchmark_sample_count);
     }
+
+    cout << "= Joint Space Inertia Matrix: CRBA + Nonlinear effects  =" << endl;
+    run_crba_nle_benchmark (model, benchmark_sample_count);
 
     delete model;
 
