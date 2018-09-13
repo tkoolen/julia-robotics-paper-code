@@ -1,0 +1,3 @@
+[deps]
+HumanoidLCMSim = "5e5b3c57-ca78-5390-ad31-cb8518b98865"
+QPControl = "ab1c7e18-f4ed-52ae-aa6d-a660f8b86f43"
