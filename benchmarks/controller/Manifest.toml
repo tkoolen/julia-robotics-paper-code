@@ -91,6 +91,12 @@ git-tree-sha1 = "ae262fa91da6a74e8937add6b613f58cd56cdad4"
 uuid = "34da2185-b29b-5c13-b0c7-acf172513d20"
 version = "1.1.0"
 
+[[Contour]]
+deps = ["LinearAlgebra", "StaticArrays", "Test"]
+git-tree-sha1 = "b974e164358fea753ef853ce7bad97afec15bb80"
+uuid = "d38c429a-6771-53c6-b99e-75d170b6e991"
+version = "0.5.1"
+
 [[CoordinateTransformations]]
 deps = ["Compat", "Rotations", "StaticArrays"]
 git-tree-sha1 = "47f05d0b7f4999609f92e657147df000818c1f24"
@@ -213,6 +219,12 @@ deps = ["Test"]
 git-tree-sha1 = "9fdecc849480c511d7825570c20c9b64c4e5d5ed"
 uuid = "de31a74c-ac4f-5751-b3fd-e18cd04993ca"
 version = "0.4.0"
+
+[[GR]]
+deps = ["Base64", "DelimitedFiles", "Pkg", "Random", "Serialization", "Sockets", "Test"]
+git-tree-sha1 = "0437921cbf8ee555ab7a2a3115c1d0907289e816"
+uuid = "28b8d3ca-fb5f-59d9-8090-bfdbd6d07a71"
+version = "0.34.1"
 
 [[GenericSVD]]
 deps = ["InteractiveUtils", "LinearAlgebra", "Pkg", "Random", "Test"]
@@ -399,8 +411,14 @@ version = "0.2.0"
 
 [[MeshIO]]
 deps = ["ColorTypes", "FileIO", "GeometryTypes", "Printf", "Test"]
-git-tree-sha1 = "a68b0026d1f970d8d33f5fe3d14b2ba1e040d037"
+git-tree-sha1 = "3e01e12c4c626578a9d47fac0d15c9fe8dad5139"
 uuid = "7269a6da-0436-5bbc-96c2-40638cbb6118"
+version = "0.3.1"
+
+[[Missings]]
+deps = ["Dates", "InteractiveUtils", "SparseArrays", "Test"]
+git-tree-sha1 = "196528fa1df03df435025f52f9c1ff8356f94738"
+uuid = "e1d29d7a-bbdc-5cf2-9ac0-f12de2c33e28"
 version = "0.3.0"
 
 [[Mmap]]
@@ -500,6 +518,24 @@ version = "1.1.0"
 deps = ["Dates", "LibGit2", "Markdown", "Printf", "REPL", "Random", "SHA", "UUIDs"]
 uuid = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
 
+[[PlotThemes]]
+deps = ["PlotUtils", "Requires", "Test"]
+git-tree-sha1 = "f3afd2d58e1f6ac9be2cea46e4a9083ccc1d990b"
+uuid = "ccf2f8ad-2431-5c83-bf29-c5338b663b6a"
+version = "0.3.0"
+
+[[PlotUtils]]
+deps = ["Colors", "Dates", "Printf", "Random", "Reexport", "Test"]
+git-tree-sha1 = "78553a920c4869d20742ba66193e3692369086ec"
+uuid = "995b91a9-d308-5afd-9ec6-746e21dbc043"
+version = "0.5.4"
+
+[[Plots]]
+deps = ["Base64", "Contour", "Dates", "FixedPointNumbers", "GR", "JSON", "LinearAlgebra", "Measures", "NaNMath", "Pkg", "PlotThemes", "PlotUtils", "Printf", "Random", "RecipesBase", "Reexport", "Requires", "Showoff", "SparseArrays", "StaticArrays", "Statistics", "StatsBase", "Test", "UUIDs"]
+git-tree-sha1 = "fa4f80b7e2173b8605353bdadf10d3ee8569efc6"
+uuid = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+version = "0.20.2"
+
 [[Printf]]
 deps = ["Unicode"]
 uuid = "de0858da-6303-5e67-8744-51eddeeeb8d7"
@@ -572,9 +608,9 @@ version = "0.7.2"
 
 [[Rotations]]
 deps = ["LinearAlgebra", "Pkg", "Random", "StaticArrays", "Statistics", "Test"]
-git-tree-sha1 = "448eb7dce980439d96472e7d0c3826ad539ed099"
+git-tree-sha1 = "ea5c3fec99390050a95ced28561484788b6d15b2"
 uuid = "6038ab10-8711-5258-84ad-4b1120ba62dc"
-version = "0.8.0"
+version = "0.9.0"
 
 [[SHA]]
 uuid = "ea8e919c-243c-51af-8825-aaa63cd721ce"
@@ -591,8 +627,20 @@ git-tree-sha1 = "e562bce4b0df3ed65562ce2ec7f56cb399368daf"
 uuid = "9966252f-7483-59e3-9a4c-8607a6b2a5fe"
 version = "0.2.0"
 
+[[Showoff]]
+deps = ["Compat", "Pkg"]
+git-tree-sha1 = "276b24f3ace98bec911be7ff2928d497dc759085"
+uuid = "992d4aef-0814-514b-bc4d-f2e9a6c4116f"
+version = "0.2.1"
+
 [[Sockets]]
 uuid = "6462fe0b-24de-5631-8697-dd941f90decc"
+
+[[SortingAlgorithms]]
+deps = ["DataStructures", "Random", "Test"]
+git-tree-sha1 = "03f5898c9959f8115e30bc7226ada7d0df554ddd"
+uuid = "a2af1166-a08f-5f64-846c-94a0d3cef48c"
+version = "0.3.1"
 
 [[SparseArrays]]
 deps = ["LinearAlgebra", "Random"]
@@ -613,6 +661,12 @@ version = "0.8.3"
 [[Statistics]]
 deps = ["LinearAlgebra", "SparseArrays"]
 uuid = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+
+[[StatsBase]]
+deps = ["DataStructures", "LinearAlgebra", "Missings", "Printf", "Random", "SortingAlgorithms", "SparseArrays", "Statistics", "Test"]
+git-tree-sha1 = "723193a13e8078cec6dcd0b8fe245c8bfd81690e"
+uuid = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
+version = "0.25.0"
 
 [[TableTraits]]
 deps = ["IteratorInterfaceExtensions", "Test"]

@@ -1,3 +1,5 @@
 [deps]
+BotCoreLCMTypes = "fce17d29-6d86-5006-bee5-0f8b6f52dd81"
 HumanoidLCMSim = "5e5b3c57-ca78-5390-ad31-cb8518b98865"
+Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
 QPControl = "ab1c7e18-f4ed-52ae-aa6d-a660f8b86f43"
