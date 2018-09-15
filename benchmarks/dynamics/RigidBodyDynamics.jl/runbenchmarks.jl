@@ -23,13 +23,10 @@ function create_benchmark_suite()
     state = MechanismState{ScalarType}(mechanism)
     result = DynamicsResult{ScalarType}(mechanism)
     nv = num_velocities(state)
-    mat = MomentumMatrix(root_frame(mechanism), Matrix{ScalarType}(undef, 3, nv), Matrix{ScalarType}(undef, 3, nv))
     torques = similar(velocity(state))
-    rfoot = findbody(mechanism, "r_foot")
-    lhand = findbody(mechanism, "l_hand")
-    p = path(mechanism, rfoot, lhand)
-    jac = GeometricJacobian(default_frame(lhand), default_frame(rfoot), root_frame(mechanism),
-        Matrix{ScalarType}(undef, 3, nv), Matrix{ScalarType}(undef, 3, nv))
+    rootframe = root_frame(mechanism)
+    centroidalframe = CartesianFrame3D("centroidal")
+    mat = MomentumMatrix(centroidalframe, Matrix{ScalarType}(undef, 3, nv), Matrix{ScalarType}(undef, 3, nv))
 
     suite["mass_matrix!"] = @benchmarkable(begin
         setdirty!($state)
@@ -69,9 +66,11 @@ function create_benchmark_suite()
         externalwrenches = RigidBodyDynamics.BodyDict(convert(BodyID, body) => rand(Wrench{ScalarType}, root_frame($mechanism)) for body in bodies($mechanism))
     end, evals = 10)
 
-    suite["momentum_matrix!"] = @benchmarkable(begin
+    suite["centroidal momentum_matrix!"] = @benchmarkable(begin
         setdirty!($state)
-        momentum_matrix!($mat, $state)
+        com = center_of_mass($state)
+        world_to_centroidal = Transform3D($rootframe, $centroidalframe, -com.v)
+        momentum_matrix!($mat, $state, world_to_centroidal)
     end, setup = rand!($state), evals = 10)
 
     suite

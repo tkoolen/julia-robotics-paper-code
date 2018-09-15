@@ -1,2 +1,3 @@
 #!/bin/sh
-~/code/julia/julia --project --startup-file=no -O3 --check-bounds=no -e 'import Pkg; Pkg.instantiate(); include("runbenchmarks.jl")'
+# julia --project --color=yes -e 'import Pkg; Pkg.instantiate()'
+julia --project --color=yes --startup-file=no -O3 --check-bounds=no runbenchmarks.jl
