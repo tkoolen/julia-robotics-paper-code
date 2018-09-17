@@ -1,4 +1,4 @@
-** Uncertainty propagation through a RigidBodySim.jl simulation using Measurements.jl (Fig. 4)
+## Uncertainty propagation through a RigidBodySim.jl simulation using Measurements.jl (Fig. 4)
 
 * [Set up IJulia](https://github.com/JuliaLang/IJulia.jl)
 * `cd` into this directory
