@@ -6,21 +6,21 @@ This repository contains code associated with the paper "Julia for Robotics: Sim
 
 Main packages discussed in the paper:
 
-* [RigidBodyDynamics.jl](https://github.com/JuliaRobotics/RigidBodyDynamics.jl): rigid body dynamics library
-* [MeshCat.jl](https://github.com/rdeits/MeshCat.jl): 3D visualizer
-* [RigidBodySim.jl](https://github.com/JuliaRobotics/RigidBodySim.jl): a simulation environment
-* [Parametron.jl](https://github.com/tkoolen/Parametron.jl): optimization framework
-* [QPControl.jl](https://github.com/tkoolen/QPControl.jl): QP-based low-level control algorithms
+* [RigidBodyDynamics.jl](https://github.com/JuliaRobotics/RigidBodyDynamics.jl): rigid body dynamics library.
+* [MeshCat.jl](https://github.com/rdeits/MeshCat.jl): 3D visualizer.
+* [RigidBodySim.jl](https://github.com/JuliaRobotics/RigidBodySim.jl): a simulation environment.
+* [Parametron.jl](https://github.com/tkoolen/Parametron.jl): optimization framework.
+* [QPControl.jl](https://github.com/tkoolen/QPControl.jl): QP-based low-level control algorithms.
 
 Additional relevant packages:
 
-* [StrandBeestRobot.jl](https://github.com/rdeits/StrandbeestRobot.jl): simulation of a strandbeest-like mechanism, used to create Fig. 3
-* [LCMCore.jl](https://github.com/JuliaRobotics/LCMCore.jl): bindings to the LCM (Lightweight Communications and Marshalling) message passing library
+* [StrandBeestRobot.jl](https://github.com/rdeits/StrandbeestRobot.jl): simulation of a strandbeest-like mechanism, used to create Fig. 3.
+* [LCMCore.jl](https://github.com/JuliaRobotics/LCMCore.jl): bindings to the LCM (Lightweight Communications and Marshalling) message passing library.
 
 ### Benchmarks
 
 * [benchmarks/dynamics](https://github.com/tkoolen/julia-robotics-paper-code/tree/master/benchmarks/dynamics): code used to benchmark RigidBodyDynamics.jl and RBDL (Table I).
-* [benchmarks/controller](https://github.com/tkoolen/julia-robotics-paper-code/tree/master/benchmarks/controller): controller benchmark code (used to create Fig. 6)
+* [benchmarks/controller](https://github.com/tkoolen/julia-robotics-paper-code/tree/master/benchmarks/controller): controller benchmark code (used to create Fig. 6).
 
 ### Notebooks
 
