@@ -2,6 +2,16 @@
 
 This repository contains code associated with the paper "Julia for Robotics: Simulation and Real-time Control in a High-level Programming Language", submitted to ICRA 2019.
 
+### Setup
+
+To run benchmarks and notebooks locally, clone the package and use
+
+```bash
+git submodule update --init --recursive
+```
+
+in the root of the cloned repository to initialize git submodules.
+
 ### Packages
 
 Main packages discussed in the paper:
@@ -24,8 +34,4 @@ Additional relevant packages:
 
 ### Notebooks
 
-The [`notebooks`](https://github.com/tkoolen/julia-robotics-paper-code/tree/master/notebooks) directory contains the Jupyter notebooks used to generate Fig. 1 and Fig. 4:
-
-* [notebooks/atlas-screenshots](https://github.com/tkoolen/julia-robotics-paper-code/tree/master/notebooks/atlas-screenshots): visualization of Atlas (Fig. 1).
-* [notebooks/measurements](https://github.com/tkoolen/julia-robotics-paper-code/tree/master/notebooks/measurements): uncertainty propagation through a RigidBodySim.jl simulation using Measurements.jl (Fig. 4).
-
+The [`notebooks`](https://github.com/tkoolen/julia-robotics-paper-code/tree/master/notebooks) directory contains the Jupyter notebook used to generate Fig. 4.
