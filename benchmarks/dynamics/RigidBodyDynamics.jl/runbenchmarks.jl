@@ -1,24 +1,22 @@
 using RigidBodyDynamics
 using Random
 using BenchmarkTools
+using LinearAlgebra
+
+BLAS.set_num_threads(1) # see https://github.com/JuliaRobotics/RigidBodyDynamics.jl/issues/500
 
 const ScalarType = Float64
 # const ScalarType = Float32
 
 function create_floating_atlas()
     urdf = joinpath(@__DIR__, "..", "atlas.urdf")
-    atlas = parse_urdf(ScalarType, urdf)
-    for joint in out_joints(root_body(atlas), atlas)
-        floatingjoint = Joint(string(joint), frame_before(joint), frame_after(joint), QuaternionFloating{ScalarType}())
-        replace_joint!(atlas, joint, floatingjoint)
-    end
+    atlas = parse_urdf(urdf, scalar_type=ScalarType, floating=true)
     atlas
 end
 
 function create_benchmark_suite()
     suite = BenchmarkGroup()
     mechanism = create_floating_atlas()
-    remove_fixed_tree_joints!(mechanism)
 
     state = MechanismState{ScalarType}(mechanism)
     result = DynamicsResult{ScalarType}(mechanism)
