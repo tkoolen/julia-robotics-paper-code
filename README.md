@@ -2,16 +2,6 @@
 
 This repository contains code associated with the paper "Julia for Robotics: Simulation and Real-time Control in a High-level Programming Language", submitted to ICRA 2019.
 
-### Setup
-
-To run benchmarks and notebooks locally, clone the package and use
-
-```bash
-git submodule update --init --recursive
-```
-
-in the root of the cloned repository to initialize git submodules.
-
 ### Packages
 
 Main packages discussed in the paper:
@@ -28,10 +18,16 @@ Additional relevant packages:
 * [LCMCore.jl](https://github.com/JuliaRobotics/LCMCore.jl): bindings to the LCM (Lightweight Communications and Marshalling) message passing library.
 * [QPWalkingControl.jl](https://github.com/tkoolen/QPWalkingControl.jl): a walking controller for Atlas based on QPControl.jl (under development).
 
+### Setup
+
+To run benchmarks and notebooks locally, simply clone the package and follow the instructions below.
+
 ### Benchmarks
 
 * [benchmarks/dynamics](https://github.com/tkoolen/julia-robotics-paper-code/tree/master/benchmarks/dynamics): code used to benchmark RigidBodyDynamics.jl and RBDL (Table I).
 * [benchmarks/controller](https://github.com/tkoolen/julia-robotics-paper-code/tree/master/benchmarks/controller): controller benchmark code (used to create Fig. 6).
+
+Please see the associated `README.md` for information on how to run these benchmarks.
 
 ### Notebooks
 

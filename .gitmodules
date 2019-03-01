@@ -1,6 +1,0 @@
-[submodule "benchmarks/controller/packages/QPControl"]
-	path = benchmarks/controller/packages/QPControl
-	url = https://github.com/tkoolen/QPControl.jl.git
-[submodule "benchmarks/controller/packages/HumanoidLCMSim"]
-	path = benchmarks/controller/packages/HumanoidLCMSim
-	url = https://github.com/tkoolen/HumanoidLCMSim.jl.git
