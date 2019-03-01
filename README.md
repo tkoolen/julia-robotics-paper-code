@@ -26,6 +26,7 @@ Additional relevant packages:
 
 * [StrandBeestRobot.jl](https://github.com/rdeits/StrandbeestRobot.jl): simulation of a strandbeest-like mechanism, used to create Fig. 3.
 * [LCMCore.jl](https://github.com/JuliaRobotics/LCMCore.jl): bindings to the LCM (Lightweight Communications and Marshalling) message passing library.
+* [QPWalkingControl.jl](https://github.com/tkoolen/QPWalkingControl.jl): a walking controller for Atlas based on QPControl.jl (under development).
 
 ### Benchmarks
 
@@ -35,3 +36,5 @@ Additional relevant packages:
 ### Notebooks
 
 The [`notebooks`](https://github.com/tkoolen/julia-robotics-paper-code/tree/master/notebooks) directory contains the Jupyter notebook used to generate Fig. 4.
+
+Most of the packages listed above also have a `notebooks` directory with usage examples.
