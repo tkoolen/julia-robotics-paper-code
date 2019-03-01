@@ -2,6 +2,10 @@
 
 This repository contains code associated with the paper "Julia for Robotics: Simulation and Real-time Control in a High-level Programming Language", submitted to ICRA 2019.
 
+### Video
+
+The video associated with the paper can be found [here](https://player.vimeo.com/video/320647370).
+
 ### Packages
 
 Main packages discussed in the paper:
