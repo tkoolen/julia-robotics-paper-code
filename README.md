@@ -33,7 +33,7 @@ To run benchmarks and notebooks locally, simply clone the package and follow the
 
 Please see the associated `README.md` for information on how to run these benchmarks.
 
-The figure below shows an additional quick benchmark result for the standing controller that does *not* include network communication using LCMCore.jl, as opposed to the figure in the paper.
+The figure below shows an additional quick benchmark result for the standing controller that does *not* include network communication using LCMCore.jl, as opposed to the figure in the paper. There is one sample at 1.67 ms.
 
 ![dtbenchmarks](https://raw.githubusercontent.com/tkoolen/QPControl.jl/tk/bench/notebooks/controller_dt_histogram.png)
 
