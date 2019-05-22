@@ -33,6 +33,10 @@ To run benchmarks and notebooks locally, simply clone the package and follow the
 
 Please see the associated `README.md` for information on how to run these benchmarks.
 
+The figure below shows an additional quick benchmark result for the standing controller that does *not* include network communication using LCMCore.jl, as opposed to the figure in the paper.
+
+![dtbenchmarks](https://raw.githubusercontent.com/tkoolen/QPControl.jl/tk/bench/notebooks/controller_dt_histogram.png)
+
 ### Notebooks
 
 The [`notebooks`](https://github.com/tkoolen/julia-robotics-paper-code/tree/master/notebooks) directory contains the Jupyter notebook used to generate Fig. 4.
